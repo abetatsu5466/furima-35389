@@ -20,7 +20,7 @@
 
 - has_many :items
 - has_many :Purchases
-  has_many :delivery
+  
 
 ## items テーブル
 
@@ -39,9 +39,9 @@
 
 ### Association
 
-- has_many :users
-- has_many :Purchases
-  has_many :delivery
+- belongs_to :users
+- has_one :purchases
+  
 
 ## Purchases テーブル
 
@@ -54,8 +54,9 @@
 
   ## Association
 
-  has_many :users
-  has_may :items
+  belongs_to :users
+  belongs_to :items
+  belongs_to :delivery
 
   ## delivery テーブル
 
@@ -65,8 +66,7 @@
 ｜Postal code  ｜integer| not:false|
 |phone number  |integer| not:false|
 ｜Shipping address | string | not:false|
-|Purchases | references |  null: false,foreign_key: true |
-
+|Purchases | references 
 
 ## Association
 
