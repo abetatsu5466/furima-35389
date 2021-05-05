@@ -64,9 +64,11 @@
 | ------ | ------ | ----------- |
 |postal_code     ｜ string | null:false|
 |address         |string | null:false|
+|house number | string | null:false|
 |building_name   | string | |
 |phone_number    | string | null:false|
 |post_id          | integer| null:false|
+|purchases   |references  |  null: false|
 
 ## Association
 
