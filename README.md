@@ -62,14 +62,13 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-|postal code     ｜ string | null:false|
-|street address  | string | null:false|
-|prefectures     | string | null:false|
+|postal_code     ｜ string | null:false|
+|street_address  | string | null:false|
 |municipality    | string | null:false|
 |address         |string | null:false|
-|building name   | string | null:false|
-|phone number    | string | null:false|
-|shipping address | string | null:false|
+|building_name   | string | |
+|phone_number    | string | null:false|
+|shipping_address | string | null:false|
 |post_id          | integer| null:false|
 
 ## Association
