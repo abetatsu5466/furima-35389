@@ -5,9 +5,9 @@
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | nickname     | string | null: false   |
-| email        | string | unique: true   |null: false |
+| email        | string | unique: true,null: false |
 | encrypted_password | string | null: false   |
-|first_name  |         | string | null: false  |
+|first_name  | string | null: false  |
 ｜last_name  | string | null: false  |
 | katakana_first_name     | string | null: false   |
 | katakana_last_name     | string | null: false   |
@@ -19,7 +19,7 @@
 ### Association
 
 - has_many :items
-- has_many :Purchases
+- has_many :purchases
   
 
 ## items テーブル
@@ -55,24 +55,23 @@
 
   belongs_to :user
   belongs_to :item
-  belongs_to :delivery
+  has_one :delivery
 
   ## delivery テーブル
 
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-｜Postal code    ｜ string | null:false|
-|Street address | string | null:false|
-｜Prefectures |   string | null:false|
-|Municipality   | string | null:false|
-|address        |string | null:false|
-|Building name | string | null:false|
-|phone number  | string | null:false|
-｜Shipping address | string | null:false|
-｜phone number |  string | null:false|
+|postal code     ｜ string | null:false|
+|street address  | string | null:false|
+|prefectures     | string | null:false|
+|municipality    | string | null:false|
+|address         |string | null:false|
+|building name   | string | null:false|
+|phone number    | string | null:false|
+|shipping address | string | null:false|
 |post_id          | integer| null:false|
 
 ## Association
 
-  has_one :purchase
+  belongs_to :purchase
