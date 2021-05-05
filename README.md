@@ -62,16 +62,16 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-｜Postal code    ｜ string | not:false|
-|Street address | string | not:false|
-｜Prefectures |   string | not:false|
-|Municipality   | string | not:false|
-|address        |string | not:false|
-|Building name | string | not:false|
-|phone number  | string | not:false|
-｜Shipping address | string | not:false|
-｜phone number |  string | not:false|
-|Purchases | references | not:false |
+｜Postal code    ｜ string | null:false|
+|Street address | string | null:false|
+｜Prefectures |   string | null:false|
+|Municipality   | string | null:false|
+|address        |string | null:false|
+|Building name | string | null:false|
+|phone number  | string | null:false|
+｜Shipping address | string | null:false|
+｜phone number |  string | null:false|
+|post_id          | integer| null:false|
 
 ## Association
 
