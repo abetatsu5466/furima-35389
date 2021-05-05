@@ -57,18 +57,15 @@
   belongs_to :item
   has_one :delivery
 
-  ## delivery テーブル
+  ## deliverys テーブル
 
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 |postal_code     ｜ string | null:false|
-|street_address  | string | null:false|
-|municipality    | string | null:false|
 |address         |string | null:false|
 |building_name   | string | |
 |phone_number    | string | null:false|
-|shipping_address | string | null:false|
 |post_id          | integer| null:false|
 
 ## Association
