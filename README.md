@@ -30,8 +30,7 @@
 | details      | text | null: false|
 |category_id       | integer| null:false
 |status_id        | integer   |null:false |
-｜costs_id        ｜integer| null: false  |
-｜area_id          ｜integer｜null: false｜
+|costs_id        ｜integer| null: false  |
 |post_id          | integer| null:false|
 |days_id          | integer | null: false|
 | price          | integer | null: false
