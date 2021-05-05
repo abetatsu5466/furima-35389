@@ -4,13 +4,14 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| nickname     | string | not: null   |
-| email        | string | unique: true   |not: null |
-| encrypted_password | string | not: null   |
-| profile       | text   | not: null   |
-| name|         | string | not: null   |
-| Katakana      | string | not: null   |
-
+| nickname     | string | not: false   |
+| email        | string | unique: true   |not: false |
+| encrypted_password | string | not: false   |
+|first name  |         | string | not: false  |
+｜last name  | string | not: false  |
+| katakana first name     | string | not: false   |
+| katakana last name     | string | not: false   |
+｜birthday_id | integer | not: false   |
 
 
 
@@ -25,18 +26,18 @@
 
 | Column | Type   | Options     |
 
-| title         | string | not: null |
-| Description   | text | not:null |
-| details      | text | not: null|
-|Category       | text| not:null
-|Status        | text   |not:null   |
-｜costs        ｜integer| not: null   |
-｜area          ｜text｜not: null｜
-|post           | text| null|
-|days          | text  | null  |
-| price         | text | integer |
-｜Profit        | text | integer |
-| user_id       | references  | not: null |
+| title         | string | not: false |
+| Description   | text | not:false |
+| details      | text | not: false|
+|Category_id       | integer| not:false
+|Status_id        | integer   |not:false |
+｜costs_id        ｜integer| not: false  |
+｜area_id          ｜integer｜not: false｜
+|post_id          | integer| not:false|
+|days_id          | integer | not: false|
+| price         | text | integer | not: false
+｜Profit        | text | integer | not: false
+| user       | references  |  not: false,foreign_key: true|
 
 ### Association
 
@@ -48,9 +49,9 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| item_id  | references | not: null |
-| user_id| references | not: null |
-|  || |
+| item  | references |  not: false,foreign_key: true |
+| user| references |  not: false,foreign_key: true |
+
 
 
   ## Association
@@ -60,8 +61,9 @@
 
   ## delivery テーブル
 
-|user_id｜references｜not: null｜
-|items| references|not: null|
+｜Shipping address | string | not:false|
+|user   ｜references｜ not: false,foreign_key: true｜
+|items   | references| not: false,foreign_key: true|
 
 ## Association
 
