@@ -7,10 +7,10 @@
 | nickname     | string | null: false   |
 | email        | string | unique: true   |null: false |
 | encrypted_password | string | null: false   |
-|first name  |         | string | null: false  |
-｜last name  | string | null: false  |
-| katakana first name     | string | null: false   |
-| katakana last name     | string | null: false   |
+|first_name  |         | string | null: false  |
+｜last_name  | string | null: false  |
+| katakana_first_name     | string | null: false   |
+| katakana_last_name     | string | null: false   |
 ｜birthday | date | null: false   |
 
 
@@ -34,13 +34,13 @@
 ｜area_id          ｜integer｜null: false｜
 |post_id          | integer| null:false|
 |days_id          | integer | null: false|
-| price         | text | integer | null: false
+| price          | integer | null: false
 | user       | references  |  null: false,foreign_key: true|
 
 ### Association
 
-- belongs_to :users
-- has_one :purchases
+- belongs_to :user
+- has_one :purchase
   
 
 ## Purchases テーブル
@@ -54,8 +54,8 @@
 
   ## Association
 
-  belongs_to :users
-  belongs_to :items
+  belongs_to :user
+  belongs_to :item
   belongs_to :delivery
 
   ## delivery テーブル
@@ -63,12 +63,17 @@
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-｜Postal code  ｜integer| not:false|
-|phone number  |integer| not:false|
+｜Postal code    ｜ string | not:false|
+|Street address | string | not:false|
+｜Prefectures |   string | not:false|
+|Municipality   | string | not:false|
+|address        |string | not:false|
+|Building name | string | not:false|
+|phone number  | string | not:false|
 ｜Shipping address | string | not:false|
-|Purchases | references 
+｜phone number |  string | not:false|
+|Purchases | references | not:false |
 
 ## Association
 
-- has_many :items
-  has_many :users
+  has_one :purchase
