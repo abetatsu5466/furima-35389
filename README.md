@@ -31,7 +31,7 @@
 |category_id       | integer| null:false
 |status_id        | integer   |null:false |
 |costs_id        ｜integer| null: false  |
-|post_id          | integer| null:false|
+|prefecture_id         | integer| null:false|
 |days_id          | integer | null: false|
 | price          | integer | null: false
 | user       | references  |  null: false,foreign_key: true|
@@ -67,8 +67,8 @@
 |house number | string | null:false|
 |building_name   | string | |
 |phone_number    | string | null:false|
-|post_id          | integer| null:false|
-|purchases   |references  |  null: false|
+|prefecture_id          | integer| null:false|
+|purchase   |references  |  null: false|
 
 ## Association
 
