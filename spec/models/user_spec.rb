@@ -45,10 +45,16 @@ RSpec.describe User, type: :model do
     end
     it 'パスワードは、半角英数字混合での入力が必須であること' do
       @user.password = 'aaaaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+
+    it 'パスワードは、半角英数字混合での入力が必須であること' do
       @user.password = '666666'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
+
     it 'パスワードは、確認用を含めて2回入力すること' do
       @user.password_confirmation = ''
       @user.valid?
@@ -89,10 +95,15 @@ RSpec.describe User, type: :model do
     end
     it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
       @user.first_name_kana = 'ひらがな'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana 全角カタカナで入力して下さい")
+    end
+    it 'ユーザー本名のフリガナは、全角（カタカナ）での入力が必須であること' do
       @user.last_name_kana = 'ひらがな'
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana 全角カタカナで入力して下さい", "Last name kana 全角カタカナで入力して下さい")
+      expect(@user.errors.full_messages).to include( "Last name kana 全角カタカナで入力して下さい")
     end
+
     it '生年月日が必須であること' do
       @user.birth_date = ""
       @user.valid?
