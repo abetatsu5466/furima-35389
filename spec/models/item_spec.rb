@@ -12,7 +12,7 @@ describe ItemsController, type: :request do
       expect(@item).to be_valid
      end
     end
-  end
+  
    context "保存できないとき" do
     it "商品画像を1枚つけることが必須であること"do
     @item.image = nil
@@ -85,4 +85,5 @@ describe ItemsController, type: :request do
     expect(@item.errors.full_messages).to include("Price is invalid")
     end
   end
+ end
 end
