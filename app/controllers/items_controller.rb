@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
 
   def index
-    # @item = Items.includes(:user)
+    @items = Item.all.order("created_at DESC")
   end
 
   def new
