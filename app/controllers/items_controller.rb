@@ -21,10 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id == @item.user_id
-    else
-      redirect_to root_path
-    end
   end
 
   def show
@@ -32,13 +28,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(items_params)
-      redirect_to item_path(@prototype)
+      redirect_to item_path(@item)
     else
       render :edit
-    end
-    if current_user.id == @item.user_id
-    else
-      redirect_to root_path
     end
   end
 
@@ -51,6 +43,8 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+    if current_user.id != @item.user.id
+      redirect_to item_path
+   end
   end
-
 end
