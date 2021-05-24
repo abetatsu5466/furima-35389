@@ -1,9 +1,9 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, omly: [:index, :create]
+  before_action :item_new, only: [:index, :create]
 
   def index
     @purchase_dv = PurchaseDv.new
-    @item = Item.find(params[:item_id])
     if  current_user == @item.user_id
       redirect_to root_path
     end 
@@ -13,7 +13,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_dv = PurchaseDv.new(purchase_params)
     if @purchase_dv.valid?
        pay_item
@@ -22,6 +21,12 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
+    if  current_user == @item.user_id
+      redirect_to root_path
+    end 
+    if @item.purchase.present?
+      redirect_to root_path
+    end
   end
 
   private
@@ -29,6 +34,10 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase_dv).permit(:postal_code, :prefecture_id, :address, :house_number, :building_name, :phone_number,)
     .merge(user_id: current_user.id ,item_id: params[:item_id], token: params[:token])
+  end
+
+  def item_new
+    @item = Item.find(params[:item_id])
   end
   
   def pay_item

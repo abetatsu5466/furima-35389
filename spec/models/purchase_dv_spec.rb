@@ -14,6 +14,10 @@ RSpec.describe PurchaseDv, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@purchase_dv).to be_valid
     end
+    it "建物名はなくても保存できる" do
+      @purchase_dv.house_number = ""
+      expect(@purchase_dv).to be_valid
+    end
    end
 
    context '内容に問題がある場合' do
@@ -22,14 +26,8 @@ RSpec.describe PurchaseDv, type: :model do
       @purchase_dv.valid?
       expect(@purchase_dv.errors.full_messages).to include("Address can't be blank")
     end
-
-    it 'house_numberは空では保存できない' do
-      @purchase_dv.house_number = ""
-      @purchase_dv.valid?
-      expect(@purchase_dv.errors.full_messages).to include("House number can't be blank")
-    end
     
-    it 'building_nameは空では保存できない' do
+    it 'building_nameは空でも保存できる' do
       @purchase_dv.building_name = ""
       @purchase_dv.valid?
       expect(@purchase_dv.errors.full_messages).to include("Building name can't be blank")
@@ -75,6 +73,18 @@ RSpec.describe PurchaseDv, type: :model do
       @purchase_dv.user_id = nil
       @purchase_dv.valid?
       expect(@purchase_dv.errors.full_messages).to include("User can't be blank")
+    end
+
+    it '商品が紐付いていないと保存できないこと' do
+      @purchase_dv.item_id = nil
+      @purchase_dv.valid?
+      expect(@purchase_dv.errors.full_messages).to include("Item can't be blank")
+    end
+
+    it '決済が紐付いていないと保存できないこと' do
+      @purchase_dv.token = nil
+      @purchase_dv.valid?
+      expect(@purchase_dv.errors.full_messages).to include("Token can't be blank")
     end
   end
  end 
