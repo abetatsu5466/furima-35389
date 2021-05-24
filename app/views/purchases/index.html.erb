@@ -32,7 +32,7 @@
     </div>
     <%# /支払額の表示 %>
 
-   <%= form_with model: @purchase_dv, url: item_purchases_path, id: 'charge-form', local: true do |f| %> %>
+   <%= form_with model: @purchase_dv, url: item_purchases_path, id: 'charge-form', local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
@@ -72,9 +72,8 @@
         <%= f.text_field :cvc,class:"input-default", id:"card-cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
       </div>
     </div> 
-     <% end %> 
     <%# /カード情報の入力 %>
-   <%= form_with model: @purchase_dv, url: item_purchases_path, local: true do |f| %>
+
     <%# 配送先の入力 %>
     <div class='shipping-address-form'>
       <h1 class='info-input-haedline'>

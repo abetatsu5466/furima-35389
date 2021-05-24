@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_user!, except: :index
 
   def index
     @purchase_dv = PurchaseDv.new
