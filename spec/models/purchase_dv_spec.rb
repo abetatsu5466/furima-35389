@@ -15,7 +15,7 @@ RSpec.describe PurchaseDv, type: :model do
       expect(@purchase_dv).to be_valid
     end
     it "建物名はなくても保存できる" do
-      @purchase_dv.house_number = ""
+      @purchase_dv.building_name = ""
       expect(@purchase_dv).to be_valid
     end
    end
@@ -27,18 +27,18 @@ RSpec.describe PurchaseDv, type: :model do
       expect(@purchase_dv.errors.full_messages).to include("Address can't be blank")
     end
     
-    it 'building_nameは空でも保存できる' do
-      @purchase_dv.building_name = ""
-      @purchase_dv.valid?
-      expect(@purchase_dv.errors.full_messages).to include("Building name can't be blank")
-    end
-    
     it 'postal_codeが空だと保存できないこと' do
       @purchase_dv.postal_code = ""
       @purchase_dv.valid?
       expect(@purchase_dv.errors.full_messages).to include("Postal code can't be blank")
     end
     
+    it 'house_numberは空では保存できない' do
+      @purchase_dv.house_number = ""
+      @purchase_dv.valid?
+      expect(@purchase_dv.errors.full_messages).to include("House number can't be blank")
+    end
+
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @purchase_dv.postal_code = "12345678"
       @purchase_dv.valid?
