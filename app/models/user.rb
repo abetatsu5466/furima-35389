@@ -13,7 +13,7 @@ class User < ApplicationRecord
    validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
 
    has_many :items
-  #  has_many :purchases
+   has_many :purchases
   
   with_options format: { with: /\A[ぁ-んァ-ン一-龥々]/, messages: "全角ひらがな、全角カタカナ、漢字で入力して下さい"} do
     validates :first_name
