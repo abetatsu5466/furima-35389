@@ -4,12 +4,9 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase_dv = PurchaseDv.new
-    if  current_user == @item.user_id
+    if  current_user.id == @item.user_id || @item.purchase.present?
       redirect_to root_path
     end 
-    if @item.purchase.present?
-      redirect_to root_path
-    end
   end
 
   def create
@@ -21,12 +18,9 @@ class PurchasesController < ApplicationController
     else
       render :index
     end
-    if  current_user == @item.user_id
+    if  current_user == @item.user_id || @item.purchase.present?
       redirect_to root_path
     end 
-    if @item.purchase.present?
-      redirect_to root_path
-    end
   end
 
   private

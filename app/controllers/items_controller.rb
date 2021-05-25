@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def edit_up
-    if current_user.id != @item.user.id || @item.purchase.present?
+    if current_user.id = @item.user.id || @item.purchase.present?
       redirect_to root_path
     end
   end
